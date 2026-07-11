@@ -49,19 +49,19 @@ python main.py
 
 ## Important Files
 
-- data_exploration.ipynb
+- data_exploration.ipynb:
 Data visualisation and exploration done in this notebook. It justifies some of the steps.
 
-- data_loader.py
+- data_loader.py:
 yfinance API connections
 
-- features.py
+- features.py:
 Log returns and rolling statistics calculations
 
-- model.py
+- model.py:
 Random forest model architecture
 
-- visualise.py
+- visualise.py:
 Produces the graphs using matplotlib
 
 ## Example
