@@ -63,3 +63,9 @@ Random forest model architecture
 
 - visualise.py
 Produces the graphs using matplotlib
+
+## Example
+
+This is an example of regime classification done on SPY from 2016-2026. This is a graph produced in the data exploration notebook
+
+![Regime Classification Chart](outputs/regime_chart.png)
