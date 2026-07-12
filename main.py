@@ -39,14 +39,14 @@ def plot_regimes(df, ticker):
     plt.tight_layout()
 
     # save fig in outputs folder
-    os.makedirs('../outputs', exist_ok=True)
-    plt.savefig('../outputs/regime_chart.png', dpi=300)
+    os.makedirs('outputs', exist_ok=True)
+    plt.savefig('outputs/regime_chart.png', dpi=300)
     print("Saved graph to outputs/regime_chart.png")
 
 if __name__ == "__main__":
     TICKER = "SPY"
     START_DATE = "2016-01-01"
-    END_DATE = "2016-12-31"
+    END_DATE = "2025-12-31"
     WINDOW = 20
     
     df = load_data(TICKER, START_DATE, END_DATE)

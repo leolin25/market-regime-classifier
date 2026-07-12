@@ -88,15 +88,29 @@ venv\Scripts\activate</code></pre>
 <li>Run the engine</li>
 </ol>
 <pre><code>python main.py</code></pre>
+<ol start="5" type="1">
+<li>To change ticker, start date and end date to look at in yfinance change the last block of code in main.py</li>
+</ol>
+<pre><code>if __name__ == "__main__":
+    TICKER = "SPY"
+    START_DATE = "2016-01-01"
+    END_DATE = "2025-12-31"
+    WINDOW = 20
+    
+    df = load_data(TICKER, START_DATE, END_DATE)
+    df = add_features(df, window=WINDOW)
+    df = classification(df)
+
+    plot_regimes(df, TICKER)</code></pre>
 </section>
 <section id="important-files" class="level2">
 <h2 class="anchored" data-anchor-id="important-files">Important Files</h2>
 <ul>
-<li><p>data_exploration.ipynb Data visualisation and exploration done in this notebook. It justifies some of the steps.</p></li>
-<li><p>data_loader.py yfinance API connections</p></li>
-<li><p>features.py Log returns and rolling statistics calculations</p></li>
-<li><p>model.py Random forest model architecture</p></li>
-<li><p>visualise.py Produces the graphs using matplotlib</p></li>
+<li><p>data_exploration.ipynb: Data visualisation and exploration done in this notebook. It justifies some of the steps.</p></li>
+<li><p>data_loader.py: yfinance API connections</p></li>
+<li><p>features.py: Log returns and rolling statistics calculations</p></li>
+<li><p>model.py: Random forest model architecture</p></li>
+<li><p>visualise.py: Produces the graphs using matplotlib</p></li>
 </ul>
 </section>
 <section id="example" class="level2">
@@ -108,6 +122,10 @@ venv\Scripts\activate</code></pre>
 <figcaption>Regime Classification Chart</figcaption>
 </figure>
 </div>
+</section>
+<section id="further-improvements" class="level2">
+<h2 class="anchored" data-anchor-id="further-improvements">Further improvements</h2>
+<p>Development of an application which can display the output graph and give the user an interface to change the settings of the engine and what data to analyse would be great</p>
 </section>
 </section>
 

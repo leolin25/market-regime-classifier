@@ -47,6 +47,22 @@ pip install -r requirements.txt
 python main.py
 ```
 
+5. To change ticker, start date and end date to look at in yfinance change the last block of code in main.py
+
+```
+if __name__ == "__main__":
+    TICKER = "SPY"
+    START_DATE = "2016-01-01"
+    END_DATE = "2025-12-31"
+    WINDOW = 20
+    
+    df = load_data(TICKER, START_DATE, END_DATE)
+    df = add_features(df, window=WINDOW)
+    df = classification(df)
+
+    plot_regimes(df, TICKER)
+```
+
 ## Important Files
 
 - data_exploration.ipynb:
@@ -69,3 +85,7 @@ Produces the graphs using matplotlib
 This is an example of regime classification done on SPY from 2016-2026. This is a graph produced in the data exploration notebook
 
 ![Regime Classification Chart](outputs/regime_chart.png)
+
+## Further improvements
+
+Development of an application which can display the output graph and give the user an interface to change the settings of the engine and what data to analyse would be great
