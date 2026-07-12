@@ -12,9 +12,9 @@ def assign_regime(x, low_vol, high_vol):
         return 2
 
 # train a model to classify the market regimes and use it to predict
-def classification(df: pd.DataFrame, window: int=20):
-    low_vol = df['target_regime'].quantile(0.33)
-    high_vol = df['target_regime'].quantile(0.33)
+def classification(df: pd.DataFrame):
+    low_vol = df['volatility'].quantile(0.33)
+    high_vol = df['volatility'].quantile(0.66)
 
     # define features and targets
     df['target_regime'] = df['volatility'].apply(lambda x: assign_regime(x, low_vol, high_vol))
