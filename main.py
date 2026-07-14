@@ -43,6 +43,7 @@ def plot_regimes(df, ticker):
     plt.savefig('outputs/regime_chart.png', dpi=300)
     print("Saved graph to outputs/regime_chart.png")
 
+# change these variables to get different results
 if __name__ == "__main__":
     TICKER = "SPY"
     START_DATE = "2016-01-01"
