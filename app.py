@@ -73,14 +73,15 @@ if run_button:
 
         # format graph
         ax.set_title(f'Market Regime Classfication using Random Forest ({ticker})')
+        ax.margins(x=0)
         ax.set_ylabel('Price (USD)')
         ax.set_xlabel('Date')
 
         # add a custom legend
         handles, labels = ax.get_legend_handles_labels()
         legend_dict = dict(zip(labels, handles))
-        ax.legend([legend_dict.get('SPY Price'), legend_dict.get('Regime 0'), legend_dict.get('Regime 1'), legend_dict.get('Regime 2')],
-                ['SPY Price', 'Low Volatility', 'Medium Volatility', 'High Volatility'], 
+        ax.legend([legend_dict.get(f'{ticker} Price'), legend_dict.get('Regime 0'), legend_dict.get('Regime 1'), legend_dict.get('Regime 2')],
+                ['Price', 'Low Volatility', 'Medium Volatility', 'High Volatility'], 
                 loc='upper left')
         
         # save fig in outputs folder
@@ -90,9 +91,9 @@ if run_button:
         # render the plot in Streamlit
         st.pyplot(fig)
 
-        # show the raw data table (last 100 rows)
-        with st.expander("View Raw Data"):
-            st.dataframe(df.tail(100))
+        # show the raw data table (last 250 rows)
+        with st.expander("View Data (Last 250 Rows)"):
+            st.dataframe(df.tail(250))
 
     except Exception as e:
             st.error(f"An error occurred: {e}. Please check if the ticker symbol is valid.")

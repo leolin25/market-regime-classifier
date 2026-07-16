@@ -28,12 +28,13 @@ def plot_regimes(df, ticker):
     ax.set_title(f'Market Regime Classfication using Random Forest ({ticker})')
     ax.set_ylabel('Price (USD)')
     ax.set_xlabel('Date')
+    ax.margins(x=0)
 
     # add a custom legend
     handles, labels = ax.get_legend_handles_labels()
     legend_dict = dict(zip(labels, handles))
-    ax.legend([legend_dict.get('SPY Price'), legend_dict.get('Regime 0'), legend_dict.get('Regime 1'), legend_dict.get('Regime 2')],
-            ['SPY Price', 'Low Volatility', 'Medium Volatility', 'High Volatility'], 
+    ax.legend([legend_dict.get(f'{ticker} Price'), legend_dict.get('Regime 0'), legend_dict.get('Regime 1'), legend_dict.get('Regime 2')],
+            ['Price', 'Low Volatility', 'Medium Volatility', 'High Volatility'], 
             loc='upper left')
 
     plt.tight_layout()
