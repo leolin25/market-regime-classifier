@@ -22,7 +22,7 @@ start_date = st.sidebar.date_input('Start Date', value=date.today() - timedelta(
 end_date = st.sidebar.date_input('End Date', value=date.today(), min_value=min_date)
 
 # hyperparameter selection
-window_size = st.sidebar.slider('Window Size (dats)', min_value=5, max_value=50, value=20, step=1)
+window_size = st.sidebar.slider('Window Size (days)', min_value=5, max_value=50, value=20, step=1)
 
 run_button = st.sidebar.button('Run model')
 
