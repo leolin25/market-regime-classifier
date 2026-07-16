@@ -12,6 +12,7 @@ The engine calculates statistical features of the data and uses a random forest 
 - pandas, numpy
 - matplotlib
 - scikit-learn
+- streamlit
 
 ## How to run the project
 
@@ -41,14 +42,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Run the engine
+4. Lauch the Web Dashboard (Recommended)
+
+```
+streamlit run app.py
+```
+
+5. Run the terminal engine (Alternative)
 
 ```
 python main.py
 ```
 
-5. To change ticker, start date and end date to look at in yfinance change the last block of code in main.py
-
+Using this method outputs the graph in output folder. If you want to change the ticker, start date, end date or window hyperparameter you can edit the bottom code of main.py
 ```
 if __name__ == "__main__":
     TICKER = "SPY"
@@ -85,7 +91,3 @@ Produces the graphs using matplotlib
 This is an example of regime classification done on SPY from 2016-2026. This is a graph produced in the data exploration notebook
 
 ![Regime Classification Chart](outputs/regime_chart.png)
-
-## Further improvements
-
-Development of an application which can display the output graph and give the user an interface to change the settings of the engine and what data to analyse would be great

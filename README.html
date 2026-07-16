@@ -64,6 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <li>pandas, numpy</li>
 <li>matplotlib</li>
 <li>scikit-learn</li>
+<li>streamlit</li>
 </ul>
 </section>
 <section id="how-to-run-the-project" class="level2">
@@ -85,12 +86,14 @@ venv\Scripts\activate</code></pre>
 </ol>
 <pre><code>pip install -r requirements.txt</code></pre>
 <ol start="4" type="1">
-<li>Run the engine</li>
+<li>Lauch the Web Dashboard (Recommended)</li>
+</ol>
+<pre><code>streamlit run app.py</code></pre>
+<ol start="5" type="1">
+<li>Run the terminal engine (Alternative)</li>
 </ol>
 <pre><code>python main.py</code></pre>
-<ol start="5" type="1">
-<li>To change ticker, start date and end date to look at in yfinance change the last block of code in main.py</li>
-</ol>
+<p>Using this method outputs the graph in output folder. If you want to change the ticker, start date, end date or window hyperparameter you can edit the bottom code of main.py</p>
 <pre><code>if __name__ == "__main__":
     TICKER = "SPY"
     START_DATE = "2016-01-01"
@@ -122,10 +125,6 @@ venv\Scripts\activate</code></pre>
 <figcaption>Regime Classification Chart</figcaption>
 </figure>
 </div>
-</section>
-<section id="further-improvements" class="level2">
-<h2 class="anchored" data-anchor-id="further-improvements">Further improvements</h2>
-<p>Development of an application which can display the output graph and give the user an interface to change the settings of the engine and what data to analyse would be great</p>
 </section>
 </section>
 
