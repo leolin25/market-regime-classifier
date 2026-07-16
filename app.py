@@ -17,8 +17,9 @@ st.markdown('Using machine learning to classify market regimes based on historic
 # sidebar for user parameters
 st.sidebar.header('User Input Parameters')
 ticker = st.sidebar.text_input('Enter Stock Ticker', value='SPY').upper()
-start_date = st.sidebar.date_input('Start Date', value=date.today() - timedelta(days=365))
-end_date = st.sidebar.date_input('End Date', value=date.today())
+min_date = date(1970, 1, 1)
+start_date = st.sidebar.date_input('Start Date', value=date.today() - timedelta(days=365), min_value=min_date)
+end_date = st.sidebar.date_input('End Date', value=date.today(), min_value=min_date)
 
 # hyperparameter selection
 window_size = st.sidebar.slider('Window Size (dats)', min_value=5, max_value=50, value=20, step=1)
