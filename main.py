@@ -52,6 +52,6 @@ if __name__ == "__main__":
     
     df = load_data(TICKER, START_DATE, END_DATE)
     df = add_features(df, window=WINDOW)
-    df = classification(df)
+    df, model = classification(df)
 
     plot_regimes(df, TICKER)

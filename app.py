@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from datetime import date, timedelta
 import os
+from sklearn.metrics import accuracy_score
 
 # Import your existing engine logic
 from src.data_loader import load_data
@@ -28,15 +29,28 @@ if run_button:
     try:
         df = load_data(ticker, start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d'))
         df = add_features(df, window_size)
-        df = classification(df)
+        df, model = classification(df)
 
         # display metrics
-        st.subheader('Model Performance Metrics')
+        st.subheader('Market Regime Metrics')
         col1, col2, col3, col4 = st.columns(4)
         col1.metric('Total Trading Days', len(df))
-        col2.metric('Low Volatility Days', len(df[df['regime'] == 'Low Volatility']))
-        col3.metric('High Volatility Days', len(df[df['regime'] == 'High Volatility']))
-        col4.metric('Medium Volatility Days', len(df[df['regime'] == 'Medium Volatility']))
+        col2.metric('Low Volatility Days', len(df[df['predicted_regime'] == 0]))
+        col3.metric('High Volatility Days', len(df[df['predicted_regime'] == 1]))
+        col4.metric('Medium Volatility Days', len(df[df['predicted_regime'] == 2]))
+
+        # display model performance metrics
+        st.subheader('Model Performance Metrics')
+        col1, col2, col3 = st.columns(3)
+        col1.metric('Training Samples', int(len(df) * 0.8))
+        col2.metric('Test Samples', len(df) - int(len(df) * 0.8))
+
+        # get the test set for y
+        split_index = int(len(df) * 0.8)
+        y_test = df['target_regime'].iloc[split_index:]
+        X_test = df[['rolling_avg_price', 'volatility']].iloc[split_index:]
+        y_pred = model.predict(X_test)
+        col3.metric('Accuracy', f"{accuracy_score(y_test, y_pred):.2%}")
 
         # generate the chart
         st.subheader(f'{ticker} Historical  Market Regimes')
@@ -48,7 +62,7 @@ if run_button:
 
         # color all regimes on the chart
         for i in range(1, len(df)):
-            current_regime = df['regime'].iloc[i]
+            current_regime = df['predicted_regime'].iloc[i]
             label = f'Regime {current_regime}' if not label_added[current_regime] else ''
 
             if not label_added[current_regime]:

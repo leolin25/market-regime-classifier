@@ -36,8 +36,8 @@ def classification(df: pd.DataFrame):
     # evaluate model
     y_pred = model.predict(X_test)
     print(f'Accuracy of model on test data: {accuracy_score(y_test, y_pred)}')
-    print(classification_report(y_test, y_pred, target_names=['Low Vol', 'Med Vol', 'High Vol']))
+    print(classification_report(y_test, y_pred, labels=[0, 1, 2], target_names=['Low Vol', 'Med Vol', 'High Vol']))
 
     df['predicted_regime'] = model.predict(X)
 
-    return df
+    return df, model
