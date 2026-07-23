@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from datetime import date, timedelta
 import os
 from sklearn.metrics import accuracy_score
+import io
 
 # Import your existing engine logic
 from src.data_loader import load_data
@@ -90,6 +91,19 @@ if run_button:
 
         # render the plot in Streamlit
         st.pyplot(fig)
+
+        # create a buffer to hold the image data
+        buf = io.BytesIO()
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+
+        # add a download button for the chart
+        st.download_button(
+             label='Download Chart as PNG',
+             data=buf,
+             file_name=f'{ticker}_regime_chart.png',
+             mime='image/png'
+        )
 
         # show the raw data table (last 250 rows)
         with st.expander("View Data (Last 250 Rows)"):

@@ -48,6 +48,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+This allows the user to specify the parameters and download the charts
+
 5. Run the terminal engine (Alternative)
 
 ```
